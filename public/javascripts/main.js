@@ -54,7 +54,7 @@ function buttonyes() {
 //ajax请求上传  
 function uploadFile(file) {
   $.ajax({
-    url: 'localhost:8081/upload',
+    url: 'http://49.233.131.188:8081/upload',
     type: 'POST',
     data: "file=" + file,
     async: true,
