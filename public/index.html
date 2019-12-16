@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./stylesheets/cropper.css">
+    <script src="./javascripts/jquery-3.4.1.min.js"></script>
+    <script src="./javascripts/cropper.js"></script>
+    <title>Document</title>
+    <style>
+    #container{
+        width: 100%;
+        height: 1000px;
+        min-width: 1000px;
+    }
+    .block1{
+        min-width: 1000px;
+        width:80%;
+        height: 70%;
+        margin: 0 auto;
+    }
+    .block1 h3{
+        text-align: center;
+    }
+    .imagecut1{
+        width: 700px;
+        height: 500px;
+        float: right;
+        
+    }
+    .smallimage1{
+        width: 250px;
+        height: 250px;
+        float: right;
+        
+    }
+    .small{
+        width: 250px;
+        height: 225px;
+        overflow: hidden;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+    img{
+        max-width: 100%;
+    }
+    .button1{
+        width: 700px;
+        height: 60px;
+        margin: 0 250px 0 0;
+        float: right;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+    .button2{
+        height: 100%;
+        width: 20%;
+        
+    }
+    .button2 button{
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="block1">
+            <h3>图片裁剪测试</h3>
+            <div class="smallimage1">
+                <h3>预览</h3>
+                <div class="small"></div>
+            </div>
+            <div class="imagecut1">
+                    <img id="image" src="./images/001.jpg">
+            </div>
+            <div class="button1">
+                <div class="button2">
+                     <label title="上传图片" for="chooseImg" class="l-btn choose-btn">
+                        <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
+                            选择图片
+                    </label> 
+                </div>
+                <div class="button2"> <button id="buttonrotage" inputmode="" onclick="buttonrotage()" type="button">旋转</button> </div>
+                <div class="button2"> <button id="buttonresize" inputmode="" onclick="buttonresize()" type="button">重置</button> </div>
+                <div class="button2"> <button id="buttonyes" inputmode="" onclick="buttonyes()" type="button">确定</button> </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="./javascripts/main.js"></script>
+
