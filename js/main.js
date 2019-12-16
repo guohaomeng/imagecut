@@ -27,7 +27,7 @@ $image.cropper({
     console.log(event.detail.scaleY);
   }
 });
-
+/*
 // Get the Cropper.js instance after initialized
 var cropper = $image.data('cropper');
 $('img').cropper(options);
@@ -42,7 +42,7 @@ $("#getCroppedCanvas").on("click", function () {
   console.log(base64url); //生成base64图片的格式
   $('.cavans').html(cas)  //在body显示出canvas元素
 })
-
+*/
 
 // 旋转  
 function buttonrotage() {
@@ -70,7 +70,7 @@ function buttonyes() {
 //ajax请求上传  
 function uploadFile(file) {
   $.ajax({
-    url: './upload/upload.do',
+    url: 'localhost:8082',
     type: 'POST',
     data: "file=" + file,
     async: true,
