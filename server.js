@@ -6,25 +6,29 @@ var app = express();
 var bodyParser = require('body-parser');
 
 
-
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 app.use('/public', express.static('public'));
-
 app.get('/index.html', function (req, res) {
   res.sendFile(__dirname + "/" + "index.html");
 })
 
 //保存base64图片POST方法
-app.post('/upload', function (req, res) {
+app.post('/upload', (req, res) => {
+  var path = "public/upload/" + gettime();
   //接收前台POST过来的base64
-  var imgData = req.body.imgData;
+  //console.log(req.body);
+  var imgData = req.body.file;
+  //console.log(imgData);
   //过滤data:URL
-  var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
-  var dataBuffer = new Buffer(base64Data, 'base64');
-  fs.writeFile(gettime(), dataBuffer, function (err) {
+  var base64Data = String(imgData).replace(/^data:image\/\w+;base64,/, "");
+  //console.log(base64Data);
+  var dataBuffer = new Buffer.from(base64Data, 'base64');
+  fs.writeFile(path, dataBuffer, function (err) {
     if (err) {
-      res.send(err);
+       res.send(err);
     } else {
-      res.send("保存成功！");
+       res.send("保存成功！");
     }
   });
 });

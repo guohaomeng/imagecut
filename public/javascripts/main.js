@@ -39,12 +39,13 @@ function buttonresize() {
 
 // 确定按钮点击事件  
 function buttonyes() {
+	$("#buttonyes1").text("上传中···");
   if ($("#image").attr("src") == null) {
     return false;
   } else {
     var cas = $('#image').cropper('getCroppedCanvas');// 获取被裁剪后的canvas  
     var base64 = cas.toDataURL('image/jpeg'); // 转换为base64  
-
+	console.log(encodeURIComponent(base64));
     //    $("#finalImg").prop("src", base64);// 显示图片  
     uploadFile(encodeURIComponent(base64))//编码后上传服务器  
 
@@ -54,12 +55,14 @@ function buttonyes() {
 //ajax请求上传  
 function uploadFile(file) {
   $.ajax({
-    url: 'http://49.233.131.188:8081/upload',
+    url: '/upload',
     type: 'POST',
     data: "file=" + file,
     async: true,
     success: function (data) {
-      console.log(data)
+      console.log(data);
+      $("#buttonyes1").text("确定");
     }
+    
   });
 }  
