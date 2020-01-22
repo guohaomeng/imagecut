@@ -36,7 +36,8 @@ app.post('/upload', (req, res) => {
 var server = app.listen(8081, function () {
   var host = server.address().address;
   var port = server.address().port;
-  console.log("访问地址为 http://%s:%s" + "/public/index.html", host, port);
+  console.log("host:%s\nport:%s", host, port);
+  console.log("访问地址为 http://localhost:%s" + "/public/index.html", port);
 
 })
 //获取时间
